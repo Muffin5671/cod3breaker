@@ -30,6 +30,6 @@
   { "message": "Only 2 attempts left!", "color": "#fa9600" },
   { "message": "LAST ATTEMPT!", "color": "#fa9600" },
   { "message": "Just kidding, unlimited attempts", "color": "#fa9600" },
-  { "message": "Please leave already...", "color": "#fa9600" },
+  { "message": "Please leave already...", "color": "#fa9600" }
 ]
   
