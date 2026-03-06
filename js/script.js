@@ -1,3 +1,4 @@
+let music = new Audio('sounds/secretLoop.mp3');
 let sfx = new Audio('sounds/achievement.mp3');
 
 function createElement(tag, content, style) {
@@ -10,9 +11,16 @@ function createElement(tag, content, style) {
 }
 
 async function readResponses() {
-  let x = await fetch('data/keymasterResponses.json');
-  let y = await x.json();
-  y.forEach((element) => console.log(element));
+  let url = 'data/keymasterResponses.json';
+  const options = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  let data = await fetch(url, options);
+  let response = await data.json();
+  response.forEach((element) => console.log(element));
 }
 
 window.onload = readResponses();
