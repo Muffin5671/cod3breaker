@@ -37,3 +37,15 @@ input {
 ::placeholder {
   color: #6F98D8;
 }
+
+div.brownbox {
+  border-width: 20px;
+  border-style: solid;
+  border-radius: 30px;
+  background-color: var(--gdbrown);
+  border-image: url(../images/brownbox.png) 12% round;
+  padding: 0px 128px 24px;
+  display: grid;
+  justify-items: center;
+  z-index: -1;
+}
