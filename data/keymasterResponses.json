@@ -3,20 +3,20 @@
   { "message": "This is getting ridiculus...", "color": "#fa9600" },
   { "message": "Go collect some stars", "color": "#fa9600" },
   { "message": "How about no?", "color": "#fa9600" },
-  { "message": "Please give up...", "color": "#fa9600" },
+  { "message": "<username>, please give up...", "color": "#fa9600" },
   { "message": "Error, error. Bad answers.", "color": "#fa9600" },
   { "message": "Failure", "color": "#fa9600" },
   { "message": "May I suggest thinking?", "color": "#fa9600" },
   { "message": "WRONG", "color": "#fa9600" },
   { "message": "You're hopeless...", "color": "#fa9600" },
   { "message": "Really, still here?", "color": "#fa9600" },
-  { "message": "What kind of name is PHP anyway?", "color": "#fa9600" },
+  { "message": "What kind of name is <username> anyway?", "color": "#fa9600" },
   { "message": "No, just no", "color": "#fa9600" },
   { "message": "Swing and a miss!", "color": "#fa9600" },
   { "message": "I told you, it won't work...", "color": "#fa9600" },
   { "message": "Door is now open. Oh wait, no it's not.", "color": "#fa9600" },
   { "message": "Is that actually your guess?", "color": "#fa9600" },
-  { "message": "Go home, user.", "color": "#fa9600" },
+  { "message": "Go home <username>.", "color": "#fa9600" },
   { "message": "Nope", "color": "#fa9600" },
   { "message": "Give up, please", "color": "#fa9600" },
   { "message": "Door is still locked", "color": "#fa9600" },
@@ -28,7 +28,6 @@
   { "message": "Only 3 attempts left!", "color": "#fa9600" },
   { "message": "Only 2 attempts left!", "color": "#fa9600" },
   { "message": "LAST ATTEMPT!", "color": "#fa9600" },
-  { "message": "Just kidding, unlimited attempts", "color": "#fa9600" },
-  { "message": "Please leave already...", "color": "#fa9600" }
+  { "message": "Just kidding, unlimited attempts", "color": "#fa9600" }
 ]
   
