@@ -5,9 +5,15 @@ if (localStorage.vosSettings == undefined) {
   localStorage.vosSettings = '{"userName": "", "audio": false}'
 }
 
-if (JSON.parse(localStorage.vosSettings).audio) {
-  music.loop = true;
-  music.play();
+function playAudio() {
+  document.body.addEventListener("click", audioCheck)
+}
+
+function audioCheck() {
+  if (JSON.parse(localStorage.vosSettings).audio) {
+    music.loop = true;
+    music.play();
+  }
 }
 
 async function readResponses() {
