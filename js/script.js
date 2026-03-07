@@ -1,6 +1,10 @@
 let music = new Audio('sounds/secretLoop.mp3');
 let sfx = new Audio('sounds/achievement.mp3');
 
+if (localStorage.vosSettings == undefined) {
+  localStorage.vosSettings = '{"userName": "", "audio": false}'
+}
+
 if (JSON.parse(localStorage.vosSettings).audio) {
   music.loop = true;
   music.play();
