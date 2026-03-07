@@ -10,14 +10,14 @@
     <script src="js/script.js"></script>
   </head>
   <body onload="playAudio()">
-    <img src="images/logo.png" style="transform: scale(0.5); margin-top: 5px;">
+    <img src="images/logo.png" style="transform: scale(0.5); margin-top: 5px;" alt="Vault of Secrets" title="Logo">
     <a href="../">
       <img src="../gdeditor/assets/GJ_arrow_01_001.png" style="
         position: absolute;
         left: -18px;
         top: -30px;
         transform: scale(0.46);
-        ">
+        " alt="Back Button" title="Back">
     </a>
     <img src="images/optionsBtn.png" style="
       position: absolute;
@@ -26,7 +26,7 @@
       transform: scale(0.4);
       cursor: pointer;
       " alt="Options Button" title="Options">
-    <p id="keymasterResponse" style="text-align: center; margin-top: 20px;">I have heard about you</p>
+    <p id="keymasterResponse" style="text-align: center; margin-top: 20px;">Loading</p>
     <input id="userInput" placeholder="..." style="
       margin-left: 29.5%;
       margin-top: -10px;
@@ -40,6 +40,6 @@
       margin-top: -55px;
       transform: scale(0.5);
       cursor: pointer;
-      " alt="Keymaster" title="The Keymaster" onclick="nextMessage(document.getElementById('userInput').value)">
+      " id="keymaster" alt="Keymaster" title="The Keymaster" onclick="nextMessage($('#userInput').value)">
   </body>
 </html>
