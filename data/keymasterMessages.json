@@ -1,0 +1,8 @@
+[
+  { "message": "I have heard about you", "color": "#ffffff" },
+  { "message": "<username> the sneaky one...", "color": "#ffffff"},
+  { "message": "You think you can fool me", "color": "#ffffff" },
+  { "message": "You are deeply mistaken", "color": "#ffffff" },
+  { "message": "Go away!", "color": "#ffffff" },
+  { "message": "I should've hid this room better...", "color": "#ffffff" }
+]
