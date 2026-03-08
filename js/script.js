@@ -53,6 +53,7 @@ window.onload = readResponses();
 function nextMessage(userInput) {
   document.getElementById('keymasterResponse').innerHTML = response[kmResponseNum].message.replace('<username>', JSON.parse(localStorage.vosSettings).userName);
   document.getElementById('keymasterResponse').style.color = response[kmResponseNum].color;
+  document.getElementById('userInput').value = '';
   kmResponseNum++;
 }
 
