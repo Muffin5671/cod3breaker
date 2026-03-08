@@ -7,7 +7,7 @@ let kmResponseNum;
 
 // when you enter this page for the first time
 if (localStorage.vosSettings == undefined) {
-  localStorage.vosSettings = '{"userName": "", "audio": false}'
+  localStorage.vosSettings = '{"userName": "Player", "audio": false}'
 }
 
 // plays audio on page click
@@ -50,8 +50,8 @@ async function readResponses() {
 window.onload = readResponses();
 
 // get ready for probably the biggest function in this script file
-function nextMessage() {
-  document.getElementById('keymasterResponse').innerHTML = response[kmResponseNum].message;
+function nextMessage(userInput) {
+  document.getElementById('keymasterResponse').innerHTML = response[kmResponseNum].message.replace('<username>', JSON.parse(localStorage.vosSettings).userName);
   document.getElementById('keymasterResponse').style.color = response[kmResponseNum].color;
   kmResponseNum++;
 }
