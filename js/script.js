@@ -54,7 +54,11 @@ function nextMessage(userInput) {
   document.getElementById('keymasterResponse').innerText = response[kmResponseNum].message.replace('<username>', JSON.parse(localStorage.vosSettings).userName);
   document.getElementById('keymasterResponse').style.color = response[kmResponseNum].color;
   document.getElementById('userInput').value = '';
-  kmResponseNum++;
+  if (kmResponseNum == 30) {
+    kmResponseNum = 0;
+  } else {
+    kmResponseNum++;
+  }
 }
 
 function achievement(name, cubeID) {
