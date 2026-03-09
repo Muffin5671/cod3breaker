@@ -84,13 +84,28 @@ window.onload = readResponses();
 
 // get ready for probably the biggest function in this script file
 function nextMessage(userInput) {
-  document.getElementById('keymasterResponse').innerText = response[kmResponseNum].message.replace('<username>', JSON.parse(localStorage.vosSettings).userName);
-  document.getElementById('keymasterResponse').style.color = response[kmResponseNum].color;
-  document.getElementById('userInput').value = '';
-  if (kmResponseNum == response.length - 1) {
-    kmResponseNum = 0;
+
+  if (!(userInput == '')) {
+
+    document.getElementById('keymasterResponse').innerText = response[kmResponseNum].message.replace('<username>', JSON.parse(localStorage.vosSettings).userName);
+    document.getElementById('keymasterResponse').style.color = response[kmResponseNum].color;
+    document.getElementById('userInput').value = '';
+    if (kmResponseNum == response.length - 1) {
+      kmResponseNum = 0;
+    } else {
+      kmResponseNum++;
+    }
+
   } else {
-    kmResponseNum++;
+
+    document.getElementById('keymasterResponse').innerText = response[kmResponseNum].message.replace('<username>', JSON.parse(localStorage.vosSettings).userName);
+    document.getElementById('keymasterResponse').style.color = response[kmResponseNum].color;
+    document.getElementById('userInput').value = '';
+    if (kmMessageNum == response2.length - 1) {
+      kmMessageNum = 0;
+    } else {
+      kmMessageNum++;
+    }
   }
 }
 
