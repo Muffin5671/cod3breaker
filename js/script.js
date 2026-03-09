@@ -43,7 +43,7 @@ async function readResponses() {
     response = await data.json();
     
     kmResponseNum = Math.floor(Math.random() * response.length);
-    response.forEach((element) => console.log(element));
+    /* debug script: response.forEach((element) => console.log(element)); */
     
   } catch (err) {
     
@@ -77,7 +77,7 @@ async function readResponses() {
 
     kmMessageNum++;
     
-    response2.forEach((element) => console.log(element));
+    /* debug script: response2.forEach((element) => console.log(element)); */
     return response2;
     
   } catch (err) {
