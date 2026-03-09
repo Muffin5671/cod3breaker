@@ -110,3 +110,13 @@ function achievement(name, cubeID) {
   document.body.append(element);
   
 }
+
+function optMenu() {
+  let element = document.createElement('div');
+  element.id = 'optMenu';
+  element.className = 'brownbox';
+  let opt1 = document.createElement('input');
+  opt1.type = 'checkbox';
+  element.append(opt1);
+  document.body.append(element);
+}
