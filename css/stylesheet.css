@@ -49,7 +49,11 @@ input {
 
 img#loading {
   inline-size: 80px;
-  animation: loadingSpin 1s infinite linear;
+  animation: loadingSpin 1.1s infinite linear;
+}
+
+img#basementDoor:active {
+  filter: brightness(0.75);
 }
 
 div.brownbox {

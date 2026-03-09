@@ -42,7 +42,7 @@
       " alt="Achievements Button" title="Achievements" onclick="achMenu()">
     
     <p id="keymasterResponse" style="text-align: center; margin-top: 20px;">
-      <img src="images/loading.png" id="loading" alt="Loading Icon" title="Loading">
+      <img src="images/loading.png" style="-webkit-user-drag: none;" id="loading" alt="Loading Icon" title="Loading">
     </p>
     
     <input id="userInput" placeholder="..." style="
@@ -62,7 +62,7 @@
       cursor: pointer;
       " id="keymaster" alt="Keymaster" title="The Keymaster" onclick="nextMessage(document.getElementById('userInput').value)">
 
-    <img src="images/basementDoor.png" style="
+    <img src="images/basementDoor.png" id="basementDoor" style="
       position: absolute;
       right: -19px;
       bottom: -51px;
