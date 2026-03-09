@@ -82,7 +82,6 @@ async function readResponses() {
     kmMessageNum++;
     
     /* debug script: response2.forEach((element) => console.log(element)); */
-    return response2;
     
   } catch (err) {
     
@@ -105,7 +104,7 @@ async function readResponses() {
     response3 = await data3.json();
     
     kmBasementNum = Math.floor(Math.random() * response3.length);
-    /* debug script: response.forEach((element) => console.log(element)); */
+    /* debug script: response3.forEach((element) => console.log(element)); */
     
   } catch (err) {
     
