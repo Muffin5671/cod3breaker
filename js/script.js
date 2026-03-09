@@ -4,6 +4,8 @@ let sfx = new Audio('sounds/achievement.mp3');
 
 let response;
 let kmResponseNum;
+let response2;
+let kmMessageNum;
 
 // when you enter this page for the first time
 if (localStorage.vosSettings == undefined) {
@@ -26,9 +28,9 @@ function audioCheck() {
 // keymaster responses are in an external JSON
 async function readResponses() {
   
-  let url = 'data/keymasterResponses.json';
+  url = 'data/keymasterResponses.json';
   
-  const options = {
+  options = {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -39,19 +41,40 @@ async function readResponses() {
 
     let data = await fetch(url, options);
     response = await data.json();
-
-    document.getElementById('loading').id = 'keymaster';
-    document.getElementById('keymaster').src = 'images/keymaster.png';
-    document.getElementById('keymaster').style.transform = 'scale(0.5)';
     
     kmResponseNum = Math.floor(Math.random() * response.length);
     response.forEach((element) => console.log(element));
-    return response;
     
   } catch (err) {
     
     document.getElementById('keymasterResponse').innerHTML = 'Something went wrong...';
-    document.getElementById('loading').remove();
+    
+  }
+
+  url = 'data/keymasterMessages.json';
+  
+  options = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  
+  try {
+
+    let data2 = await fetch(url, options);
+    response2 = await data2.json();
+    
+    kmMessageNum = 0;
+
+    document.getElementById('keymasterResponse').innerText = response2[kmMessageNum].message.replace('<username>', JSON.parse(localStorage.vosSettings).userName);;
+    
+    response2.forEach((element) => console.log(element));
+    return response2;
+    
+  } catch (err) {
+    
+    document.getElementById('keymasterResponse').innerHTML = 'Something went wrong...';
     
   }
 }
@@ -85,4 +108,5 @@ function achievement(name, cubeID) {
   achName.innerText = name;
   element.append(achName);
   document.body.append(element);
+  
 }
