@@ -13,7 +13,7 @@ let kmBasementNum;
 
 // when you enter this page for the first time
 if (localStorage.vosSettings == undefined) {
-  localStorage.vosSettings = '{"userName": "Player", "audio": false}'
+  localStorage.vosSettings = JSON.stringify({userName: 'Player', audio: false})
 }
 
 // plays audio on page click
@@ -29,25 +29,17 @@ function audioCheck() {
   }
 }
 
-// keymaster responses are in an external JSON
+// all keymaster messages are in an external JSON
 async function readResponses() {
   
   url = 'data/keymasterResponses.json';
   
-  options = {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }
-  
   try {
 
-    let data = await fetch(url, options);
-    response = await data.json();
+    response = await fetch(url).then(res => res.json());
     
+    // responses start on a random number
     kmResponseNum = Math.floor(Math.random() * response.length);
-    /* debug script: response.forEach((element) => console.log(element)); */
     
   } catch (err) {
     
@@ -57,17 +49,9 @@ async function readResponses() {
 
   url = 'data/keymasterMessages.json';
   
-  options = {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }
-  
   try {
 
-    let data2 = await fetch(url, options);
-    response2 = await data2.json();
+    response2 = await fetch(url).then(res => res.json());
     
     // can start on array index 0 or array index 9
 
@@ -81,8 +65,6 @@ async function readResponses() {
 
     kmMessageNum++;
     
-    /* debug script: response2.forEach((element) => console.log(element)); */
-    
   } catch (err) {
     
     document.getElementById('keymasterResponse').innerHTML = 'Something went wrong...';
@@ -91,17 +73,9 @@ async function readResponses() {
 
   url = 'data/keymasterBasement.json';
   
-  options = {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }
-  
   try {
 
-    let data3 = await fetch(url, options);
-    response3 = await data3.json();
+    response3 = await fetch(url).then(res => res.json());
     
     kmBasementNum = Math.floor(Math.random() * response3.length);
     /* debug script: response3.forEach((element) => console.log(element)); */
@@ -182,4 +156,8 @@ function optMenu() {
   opt1.oninput = "music.volume = document.getElementById('volumeSlider').value / 100"; // doesn't work ??
   element.append(opt1);
   document.body.append(element);
+}
+
+function loadMod(zip) {
+  // mod reader
 }

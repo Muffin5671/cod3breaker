@@ -1,0 +1,12 @@
+[
+  {"name": "Special Chest", "cube": 103, "messages": [
+    "Want to hear a secret?",
+    "Just don't tell RubRub",
+    "I am building my own level",
+    "I call it \"The Challenge\"",
+    "Hope it gets featured",
+    "But probably not...",
+    "RubRub will never notice me"
+    ], "unlockCode": "The Challenge", "whenUnlocked": "playAppear()"
+  }
+]
