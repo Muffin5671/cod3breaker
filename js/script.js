@@ -2,6 +2,8 @@
 let music = new Audio('sounds/secretLoop.mp3');
 let sfx = new Audio('sounds/achievement.mp3');
 
+let audioOn = JSON.parse(localStorage.vosSettings).audio;
+
 let response;
 let kmResponseNum;
 
@@ -23,7 +25,7 @@ function playAudio() {
 
 // checks if audio option is on/off
 function audioCheck() {
-  if (JSON.parse(localStorage.vosSettings).audio) {
+  if (audioOn) {
     music.loop = true;
     music.play();
   }
@@ -153,6 +155,20 @@ function optMenu() {
   opt1.oninput = "music.volume = document.getElementById('volumeSlider').value / 100"; // doesn't work ??
   element.append(opt1);
   document.body.append(element);
+}
+
+function generateSettingsFile({defaultUsername: defaultUsername}) {
+
+  let userName;
+
+  if (defaultUsername) {
+    userName = 'Player';
+  }
+
+  return {
+    userName: userName,
+    audio: audioOn,
+  }
 }
 
 function loadMod(zip) {
