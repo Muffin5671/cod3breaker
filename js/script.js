@@ -13,9 +13,16 @@ let kmMessageNum;
 let response3;
 let kmBasementNum;
 
+function mobileTest() {
+  isMobile = /iPhone|Android/.test(navigator.userAgent);
+  if (isMobile) {
+    alert('Note: It is recommended to use a larger screen like a desktop and not a small screen like a phone. You can manually change the page size to a proper one.');
+  }
+}
+
 // when you enter this page for the first time
 if (localStorage.vosSettings == undefined) {
-  localStorage.vosSettings = JSON.stringify({userName: 'Player', audio: false})
+  localStorage.vosSettings = generateSettingsFile({defaultUsername: true});
 }
 
 // plays audio on page click
@@ -117,9 +124,12 @@ function nextMessage(userInput) {
   }
 }
 
+// messages when basement door clicked but locked
 function basementMessage() {
 
+  // just in case any mods make this use your username :)))
   alert(response3[kmBasementNum].replace('<username>', JSON.parse(localStorage.vosSettings).userName));
+  
   if (kmBasementNum == response3.length - 1) {
     kmBasementNum = 0;
   } else {
