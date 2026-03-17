@@ -1,4 +1,7 @@
-// setup variables
+// setup script
+
+import jquery400Min from "./libraries/jquery-4.0.0.min";
+
 let music = new Audio('sounds/secretLoop.mp3');
 let sfx = new Audio('sounds/achievement.mp3');
 
@@ -13,6 +16,7 @@ let kmMessageNum;
 let response3;
 let kmBasementNum;
 
+let isMobile;
 function mobileTest() {
   isMobile = /iPhone|Android/.test(navigator.userAgent);
   if (isMobile) {
