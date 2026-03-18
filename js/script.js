@@ -1,7 +1,5 @@
 // setup script
 
-import jquery400Min from "./libraries/jquery-4.0.0.min.js";
-
 let music = new Audio('sounds/secretLoop.mp3');
 let sfx = new Audio('sounds/achievement.mp3');
 
@@ -164,15 +162,7 @@ function achievement(name, cubeID) {
 }
 
 function optMenu() {
-  let element = document.createElement('div');
-  element.id = 'optMenu';
-  element.className = 'brownbox';
-  let opt1 = document.createElement('input');
-  opt1.id = 'volumeSlider'
-  opt1.type = 'range';
-  opt1.oninput = "music.volume = document.getElementById('volumeSlider').value / 100"; // doesn't work ??
-  element.append(opt1);
-  document.body.append(element);
+  
 }
 
 function generateSettingsFile({defaultUsername: defaultUsername}) {

@@ -7,8 +7,8 @@
     <title>Vault of Secrets Simulator</title>
     <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="css/stylesheet.css">
-    <script src="js/script.js" type="module"></script>
-    <script src="js/libraries/jquery-4.0.0.min.js" type="module"></script>
+    <script src="js/script.js"></script>
+    <script src="js/libraries/jquery-4.0.0.min.js"></script>
   </head>
   <body onload="playAudio()">
     
@@ -76,5 +76,11 @@
       cursor: pointer;
       " alt="Basement Door" title="Basement" onclick="basementMessage()">
     
+    <div id="menus">
+      <div class="brownbox" id="optMenu" style="display: none;">
+        <input id="userNameInput" maxlength="15">
+        <input type="audio" id="audioCheck">
+      </div>
+    </div>
   </body>
 </html>
