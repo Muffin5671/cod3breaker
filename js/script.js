@@ -3,7 +3,12 @@
 let music = new Audio('sounds/secretLoop.mp3');
 let sfx = new Audio('sounds/achievement.mp3');
 
-let audioOn = JSON.parse(localStorage.vosSettings).audio;
+let audioOn;
+if (!JSON.parse(localStorage.vosSettings).audio == undefined) {
+  audioOn = JSON.parse(localStorage.vosSettings).audio;
+} else {
+  audioOn = false;
+}
 
 let response;
 let kmResponseNum;
@@ -23,7 +28,7 @@ function mobileTest() {
 }
 
 function mobileTap() {
-  document.body.addEventListener("click", mobileTest);
+  document.body.addEventListener('click', mobileTest);
 }
 
 // when you enter this page for the first time
@@ -33,7 +38,7 @@ if (localStorage.vosSettings == undefined) {
 
 // plays audio on page click
 function playAudio() {
-  document.body.addEventListener("click", audioCheck);
+  document.body.addEventListener('click', audioCheck);
 }
 
 // checks if audio option is on/off
@@ -44,13 +49,33 @@ function audioCheck() {
   }
 }
 
+function gzip(string) {
+  const compressed = pako.gzip(string);
+  return btoa(String.fromCharCode(...compressed));
+}
+
+function ungzip(string) {
+  const binary = atob(string);
+  const bytes = new Uint8Array(binary.length);
+
+  for (let i = 0; i < binary.length; i++) {
+    bytes[i] = binary.charCodeAt(i);
+  }
+
+  return new TextDecoder().decode(pako.ungzip(bytes));
+}
+
 // all keymaster messages are in an external JSON
 async function readResponses() {
   
 
   try {
 
-    response = await fetch('data/keymasterResponses.json').then(res => res.json());
+    if (localStorage.vosCached == undefined) {
+      response = ungzip(atob(localStorage.vosCached).response);
+    } else {
+      response = await fetch('data/keymasterResponses.json').then(res => res.json());
+    }
     
     // responses start on a random number
     kmResponseNum = Math.floor(Math.random() * response.length);
@@ -96,6 +121,10 @@ async function readResponses() {
     
     document.getElementById('keymasterResponse').innerHTML = 'Something went wrong...';
     
+  }
+
+  if (localStorage.vosCached == undefined) {
+    localStorage.vosCached = gzip(btoa(JSON.stringify({response: response, response2: response2, response3: response3})));
   }
 
 }

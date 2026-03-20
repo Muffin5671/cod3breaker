@@ -8,7 +8,7 @@
     <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="css/stylesheet.css">
     <script src="js/script.js"></script>
-    <script src="js/libraries/jquery-4.0.0.min.js"></script>
+    <script src="js/libraries/pako.min.js"></script>
   </head>
   <body onload="playAudio()">
     
@@ -79,7 +79,8 @@
     <div id="menus">
       <div class="brownbox" id="optMenu" style="display: none;">
         <input id="userNameInput" maxlength="15">
-        <input type="audio" id="audioCheck">
+        <input type="checkbox" id="audioCheck">
+        <button onclick="saveChanges()">Save</button>
       </div>
     </div>
   </body>
