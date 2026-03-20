@@ -65,14 +65,16 @@ function ungzip(string) {
   return new TextDecoder().decode(pako.ungzip(bytes));
 }
 
+let cached = JSON.parse(atob(ungzip(JSON.parse(localStorage.vosCached).data)));
+
 // all keymaster messages are in an external JSON
 async function readResponses() {
   
 
   try {
 
-    if (!localStorage.vosCached == undefined) {
-      response = JSON.parse(atob(ungzip(localStorage.vosCached))).messages;
+    if (!cached.messages == undefined) {
+      response = cached.messages;
     } else {
       response = await fetch('data/keymasterResponses.json').then(res => res.json());
     }
@@ -88,8 +90,12 @@ async function readResponses() {
 
 
   try {
-
-    response2 = await fetch('data/keymasterMessages.json').then(res => res.json());
+    
+    if (!cached.responses == undefined) {
+      response2 = cached.responses;
+    } else {
+      response2 = await fetch('data/keymasterMessages.json').then(res => res.json());
+    }
     
     // can start on array index 0 or array index 9
 
@@ -112,7 +118,11 @@ async function readResponses() {
 
   try {
 
-    response3 = await fetch('data/keymasterBasement.json').then(res => res.json());
+    if (!cached.basement == undefined) {
+      response3 = cached.basement;
+    } else {
+      response3 = await fetch('data/keymasterBasement.json').then(res => res.json());
+    }
     
     kmBasementNum = Math.floor(Math.random() * response3.length);
     /* debug script: response3.forEach((element) => console.log(element)); */
@@ -124,7 +134,7 @@ async function readResponses() {
   }
 
   if (localStorage.vosCached == undefined) {
-    localStorage.vosCached = gzip(btoa(JSON.stringify({messages: response2, responses: response, basement: response3})));
+    localStorage.vosCached = JSON.stringify({data: gzip(btoa({messages: response2, responses: response, basement: response3}))});
   }
 
 }
