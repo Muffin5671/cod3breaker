@@ -139,7 +139,7 @@ async function readResponses() {
   }
 
   if (localStorage.vosCached == undefined) {
-    localStorage.vosCached = JSON.stringify({data: gzip(btoa({messages: response2, responses: response, basement: response3}))});
+    localStorage.vosCached = JSON.stringify({data: gzip(btoa(JSON.stringify({messages: response2, responses: response, basement: response3})))});
   }
 
 }
