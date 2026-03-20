@@ -65,7 +65,11 @@ function ungzip(string) {
   return new TextDecoder().decode(pako.ungzip(bytes));
 }
 
-let cached = JSON.parse(atob(ungzip(JSON.parse(localStorage.vosCached).data)));
+if (!localStorage.vosCached == undefined) {
+  let cached = JSON.parse(atob(ungzip(JSON.parse(localStorage.vosCached).data)));
+} else {
+  let cached = {};
+}
 
 // all keymaster messages are in an external JSON
 async function readResponses() {
