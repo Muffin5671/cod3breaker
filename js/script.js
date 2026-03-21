@@ -19,12 +19,15 @@ let kmMessageNum;
 let response3;
 let kmBasementNum;
 
+onclick = mobileTest;
+
 // mobile popup
 let isMobile;
 function mobileTest() {
   isMobile = /iPhone|Android/.test(navigator.userAgent);
   if (isMobile) {
     alert('Note: It is recommended to use a larger screen like a desktop and not a small screen like a phone. You can manually change the page size to a proper one.');
+    onclick = null;
   }
 }
 
@@ -204,7 +207,7 @@ function achievement(name, cubeID) {
 }
 
 function optMenu() {
-  
+  document.getElementById('optMenu').style.display = '';
 }
 
 function generateSettingsFile({defaultUsername: defaultUsername}) {
