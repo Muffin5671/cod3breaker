@@ -27,10 +27,6 @@ function mobileTest() {
   }
 }
 
-function mobileTap() {
-  document.body.addEventListener('click', mobileTest);
-}
-
 // when you enter this page for the first time
 if (localStorage.vosSettings == undefined) {
   localStorage.vosSettings = generateSettingsFile({defaultUsername: true});
@@ -65,11 +61,9 @@ function ungzip(string) {
   return new TextDecoder().decode(pako.ungzip(bytes));
 }
 
-let cached;
+let cached = {};
 if (!localStorage.vosCached == undefined) {
   cached = JSON.parse(atob(ungzip(JSON.parse(localStorage.vosCached).data)));
-} else {
-  cached = {};
 }
 
 // all keymaster messages are in an external JSON
