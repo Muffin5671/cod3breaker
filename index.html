@@ -77,7 +77,12 @@
       " alt="Basement Door" title="Basement" onclick="basementMessage()">
     
     <div id="menus">
-      <div class="brownbox" id="optMenu" style="display: none; position: absolute; height: 80%; top: 5%;">
+      <div class="brownbox" id="optMenu" style="
+        display: none;
+        position: relative;
+        width: 60%;
+        height: 500px;
+        left: 3.4%;">
         <button onclick="document.getElementById('optMenu').style.display = 'none'">Back</button>
         <input id="userNameInput" style="height: 60px;" placeholder="Username" maxlength="15">
         <input type="checkbox" id="audioCheck">
