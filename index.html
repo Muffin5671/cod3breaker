@@ -78,12 +78,13 @@
     
     <div id="menus">
       <div class="brownbox" id="optMenu" style="
-        display: none;
-        position: relative;
-        width: 60%;
-        height: 500px;
-        left: 3.4%;">
-        <button onclick="document.getElementById('optMenu').style.display = 'none'">Back</button>
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 50%;
+        height: 80%;
+        transform: translate(-50%, -50%);
+        ">
         <input id="userNameInput" style="height: 60px;" placeholder="Username" maxlength="15">
         <input type="checkbox" id="audioCheck">
         <button onclick="saveChanges()">Save</button>

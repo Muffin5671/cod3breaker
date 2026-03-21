@@ -88,7 +88,7 @@ div.brownbox {
   border-style: solid;
   border-radius: 30px;
   background-color: var(--gdbrown);
-  border-image: url(../images/brownbox.png) 13% round;
+  border-image: url(../images/brownbox.png) 12% round;
   padding: 0px 128px 24px;
   display: grid;
   justify-items: center;
