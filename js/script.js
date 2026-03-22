@@ -76,7 +76,7 @@ async function readResponses() {
 
   try {
 
-    if (!cached.messages == undefined) {
+    if (!(cached.messages == undefined)) {
       response = cached.messages;
     } else {
       response = await fetch('data/keymasterResponses.json').then(res => res.json());
