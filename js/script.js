@@ -3,15 +3,13 @@
 let music = new Audio('sounds/secretLoop.mp3');
 let sfx = new Audio('sounds/achievement.mp3');
 
-let userName;
-let audioOn;
-if (!(localStorage.vosSettings == undefined)) {
-  userName = JSON.parse(localStorage.vosSettings).userName;
-  audioOn = JSON.parse(localStorage.vosSettings).audio;
-} else {
-  userName = 'Player';
-  audioOn = false;
+// when you enter this page for the first time
+if (localStorage.vosSettings == undefined) {
+  localStorage.vosSettings = JSON.stringify(generateSettingsFile({defaultUsername: true}));
 }
+
+let userName = JSON.parse(localStorage.vosSettings).userName;
+let audioOn = JSON.parse(localStorage.vosSettings).audio;
 
 document.getElementById('userNameInput').value = JSON.parse(localStorage.vosSettings).userName;
 
@@ -35,11 +33,6 @@ function mobileTest() {
   } else {
     return false;
   }
-}
-
-// when you enter this page for the first time
-if (localStorage.vosSettings == undefined) {
-  localStorage.vosSettings = generateSettingsFile({defaultUsername: true});
 }
 
 // plays audio on page click
