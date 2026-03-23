@@ -3,12 +3,10 @@
 let music = new Audio('sounds/secretLoop.mp3');
 let sfx = new Audio('sounds/achievement.mp3');
 
-let audioOn;
-if (!JSON.parse(localStorage.vosSettings).audio == undefined) {
-  audioOn = JSON.parse(localStorage.vosSettings).audio;
-} else {
-  audioOn = false;
-}
+let userName = JSON.parse(localStorage.vosSettings).userName;
+let audioOn = JSON.parse(localStorage.vosSettings).audio;
+
+document.getElementById('userNameInput').value = JSON.parse(localStorage.vosSettings).userName;
 
 let response;
 let kmResponseNum;
@@ -18,8 +16,6 @@ let kmMessageNum;
 
 let response3;
 let kmBasementNum;
-
-onclick = mobileTest;
 
 // mobile popup
 let isMobile;
@@ -43,6 +39,13 @@ if (localStorage.vosSettings == undefined) {
 function playAudio() {
   document.body.addEventListener('click', audioCheck);
 }
+
+function clickActions() {
+  audioCheck();
+  mobileTest();
+}
+
+onclick = clickActions;
 
 // checks if audio option is on/off
 function audioCheck() {
@@ -98,7 +101,7 @@ async function readResponses() {
 
   try {
     
-    if (!cached.responses == undefined) {
+    if (!(cached.responses == undefined)) {
       response2 = cached.responses;
     } else {
       response2 = await fetch('data/keymasterMessages.json').then(res => res.json());
@@ -126,7 +129,7 @@ async function readResponses() {
 
   try {
 
-    if (!cached.basement == undefined) {
+    if (!(cached.basement == undefined)) {
       response3 = cached.basement;
     } else {
       response3 = await fetch('data/keymasterBasement.json').then(res => res.json());
@@ -154,7 +157,7 @@ onload = readResponses;
 // keymaster's next message, who 'reads' your messages
 function nextMessage(userInput) {
 
-  if (!userInput == '') {
+  if (!(userInput == '')) {
 
     document.getElementById('keymasterResponse').innerText = response[kmResponseNum].message.replace('<username>', JSON.parse(localStorage.vosSettings).userName);
     document.getElementById('keymasterResponse').style.color = response[kmResponseNum].color;
@@ -213,12 +216,14 @@ function optMenu() {
   document.getElementById('optMenu').style.display = '';
 }
 
-function generateSettingsFile({defaultUsername: defaultUsername}) {
+function generateSettingsFile({defaultUsername: boolean}) {
 
-  let userName;
+  let settingsUserName;
 
   if (defaultUsername) {
-    userName = 'Player';
+    settingsUserName = 'Player';
+  } else {
+    settingsUserName = document.getElementById('userNameInput').value;
   }
 
   return {
