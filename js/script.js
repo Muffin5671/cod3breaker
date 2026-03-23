@@ -245,6 +245,10 @@ function optMenu() {
   document.getElementById('optMenu').style.display = '';
 }
 
+function achMenu() {
+  document.getElementById('achMenu').style.display = 'flex';
+}
+
 function generateSettingsFile({defaultUsername: boolean}) {
 
   let settingsUserName;
