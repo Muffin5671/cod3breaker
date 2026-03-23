@@ -93,12 +93,29 @@
           transform: scale(0.46);
           -webkit-user-drag: none;
           cursor: pointer;
-          " alt="Close Button" title="Close Menu" onclick="document.getElementById('optMenu').style.display = 'none';">
+          " alt="Close Button" title="Close Menu" onclick="document.getElementById('optMenu').style.display = 'none'">
 
         <input id="userNameInput" style="height: 60px;" placeholder="Username" maxlength="15">
         <input type="checkbox" id="audioCheck">
-        <button onclick="saveChanges()">Save</button>
+        <button onclick="saveSettings()">Save</button>
       </div>
+      <div class="brownbox" id="achMenu" style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 50%;
+        height: 80%;
+        display: none;
+        transform: translate(-50%, -50%);
+        ">
+        <img src="images/closeBtn.png" style="
+          position: absolute;
+          left: -100px;
+          top: -100px;
+          transform: scale(0.46);
+          -webkit-user-drag: none;
+          cursor: pointer;
+          " alt="Close Button" title="Close Menu" onclick="document.getElementById('achMenu').style.display = 'none'">
     </div>
   </body>
 </html>

@@ -3,8 +3,15 @@
 let music = new Audio('sounds/secretLoop.mp3');
 let sfx = new Audio('sounds/achievement.mp3');
 
-let userName = JSON.parse(localStorage.vosSettings).userName;
-let audioOn = JSON.parse(localStorage.vosSettings).audio;
+let userName;
+let audioOn;
+if (!(localStorage.vosSettings == undefined)) {
+  userName = JSON.parse(localStorage.vosSettings).userName;
+  audioOn = JSON.parse(localStorage.vosSettings).audio;
+} else {
+  userName = 'Player';
+  audioOn = false;
+}
 
 document.getElementById('userNameInput').value = JSON.parse(localStorage.vosSettings).userName;
 
@@ -82,8 +89,8 @@ async function readResponses() {
 
   try {
 
-    if (!(cached.messages == undefined)) {
-      response = cached.messages;
+    if (!(cached.responses == undefined)) {
+      response = cached.responses;
     } else {
       response = await fetch('data/keymasterResponses.json').then(res => res.json());
     }
@@ -101,8 +108,8 @@ async function readResponses() {
 
   try {
     
-    if (!(cached.responses == undefined)) {
-      response2 = cached.responses;
+    if (!(cached.messages == undefined)) {
+      response2 = cached.messages;
     } else {
       response2 = await fetch('data/keymasterMessages.json').then(res => res.json());
     }
@@ -136,7 +143,6 @@ async function readResponses() {
     }
     
     kmBasementNum = Math.floor(Math.random() * response3.length);
-    /* debug script: response3.forEach((element) => console.log(element)); */
     
   } catch (err) {
     
@@ -149,6 +155,24 @@ async function readResponses() {
     localStorage.vosCached = JSON.stringify({data: gzip(btoa(JSON.stringify({messages: response2, responses: response, basement: response3})))});
   }
 
+}
+
+function getAchievementData() {
+  fetch('data/achievementList.json')
+  .then(res => res.json()).then(data => {
+    let achMenu = document.getElementById('achMenu');
+    data.forEach((object) => {
+      achievementDiv = document.createElement('div');
+      achievementDiv.id = object.id;
+      iconImg = document.createElement('img');
+      iconImg.src = `images/icons/${object.cube}.png`;
+      achLabel = document.createElement('p');
+      achLabel.innerText = object.name;
+      achievementDiv.append(iconImg);
+      achievementDiv.append(achLabel);
+      achMenu.append(achievementDiv);
+    })
+  })
 }
 
 // fetches keymaster responses when page loads

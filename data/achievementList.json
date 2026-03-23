@@ -1,5 +1,5 @@
 [
-  {"name": "Special Chest", "cube": 103, "messages": [
+  {"id": 1, "name": "Special Chest", "cube": 103, "messages": [
     "Want to hear a secret?",
     "Just don't tell RubRub",
     "I am building my own level",
