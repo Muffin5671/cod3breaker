@@ -164,10 +164,16 @@ function getAchievementData() {
     data.forEach((object) => {
       achievementDiv = document.createElement('div');
       achievementDiv.id = object.id;
+      achievementDiv.title = `Hint: ${object.hint}`;
       iconImg = document.createElement('img');
       iconImg.src = `images/icons/${object.cube}.png`;
+      iconImg.style.inlineSize = '60px';
       achLabel = document.createElement('p');
       achLabel.innerText = object.name;
+      achLabel.style.fontSize = '20px';
+      achLabel.style.webkitTextStroke = '1px';
+      achLabel.style.webkitTextStrokeColor = '#000000';
+      achLabel.style.margin = 0;
       achievementDiv.append(iconImg);
       achievementDiv.append(achLabel);
       achMenuElement.append(achievementDiv);
@@ -186,7 +192,7 @@ onload = loadFetch;
 // keymaster's next message, who 'reads' your messages
 function nextMessage(userInput) {
 
-  if (userInput == '') {
+  if (!(userInput == '')) {
 
     document.getElementById('keymasterResponse').innerText = response[kmResponseNum].message.replace('<username>', JSON.parse(localStorage.vosSettings).userName);
     document.getElementById('keymasterResponse').style.color = response[kmResponseNum].color;
@@ -249,7 +255,7 @@ function achMenu() {
   document.getElementById('achMenu').style.display = 'flex';
 }
 
-function generateSettingsFile({defaultUsername: boolean}) {
+function generateSettingsFile({defaultUsername: defaultUsername}) {
 
   let settingsUserName;
 
@@ -260,9 +266,13 @@ function generateSettingsFile({defaultUsername: boolean}) {
   }
 
   return {
-    userName: userName,
+    userName: settingsUserName,
     audio: audioOn,
   }
+}
+
+function saveSettings() {
+  localStorage.vosSettings = JSON.stringify(generateSettingsFile({defaultUsername: false}));
 }
 
 function loadMod(zip) {
