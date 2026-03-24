@@ -266,7 +266,7 @@ function generateSettingsFile({defaultSettings: defaultSettings}) {
     settingsAudioOn = false;
   } else {
     settingsUserName = document.getElementById('userNameInput').value;
-    settingsAudioOn = audioOn
+    settingsAudioOn = audioOn;
   }
 
   return {
