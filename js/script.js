@@ -30,6 +30,15 @@ let kmMessageNum;
 let response3;
 let kmBasementNum;
 
+function getMetadata() {
+  return {
+    version: '1.0.0',
+    name: 'Vault of Secrets Simulator',
+    creator: {name: 'MuffinGDYT', link: 'https://muffin5671.github.io/'},
+    originalCreator: {name: 'RobTop Games', link: 'https://robtopgames.com/'}
+  }
+}
+
 // mobile popup
 let isMobile;
 function mobileTest() {
@@ -217,6 +226,12 @@ function nextMessage(userInput) {
   }
 }
 
+document.addEventListener('keydown', event => {
+  if (event.code == 'Enter') {
+    nextMessage(document.querySelector('#userInput').value);
+  }
+})
+
 // messages when basement door clicked but locked
 function basementMessage() {
 
@@ -265,8 +280,8 @@ function generateSettingsFile({defaultSettings: defaultSettings}) {
     settingsUserName = 'Player';
     settingsAudioOn = false;
   } else {
-    settingsUserName = document.getElementById('userNameInput').value;
-    settingsAudioOn = audioOn;
+    settingsUserName = document.querySelector('#userNameInput').value.replaceAll(' ', '');
+    settingsAudioOn = document.querySelector('#audioCheck').checked;
   }
 
   return {
@@ -276,7 +291,21 @@ function generateSettingsFile({defaultSettings: defaultSettings}) {
 }
 
 function saveSettings() {
-  localStorage.vosSettings = JSON.stringify(generateSettingsFile({defaultSettings: false}));
+  let settings = generateSettingsFile({defaultSettings: false});
+
+  let uContainsSpace = / /.test(settings.userName);
+  if (uContainsSpace) {
+    alert(`Username saved as "${settings.userName.replaceAll(' ', '')}". Usernames cannot contain spaces.`);
+  }
+
+  settings.userName = settings.userName.replaceAll(' ', '');
+
+  let uEmpty = document.querySelector('#userNameInput').value == '';
+  if (uEmpty) {
+    alert('Username cannot be empty.')
+  } else {
+    localStorage.vosSettings = JSON.stringify(settings);
+  }
 }
 
 function loadMod(zip) {
