@@ -1,5 +1,5 @@
 [
-  {"id": 1, "name": "Special Chest", "cube": 103, "messages": [
+  {"id": 1, "name": "Special Chest", "type": "cube", "item": 103, "messages": [
     "Want to hear a secret?",
     "Just don't tell RubRub",
     "I am building my own level",
@@ -7,6 +7,38 @@
     "Hope it gets featured",
     "But probably not...",
     "RubRub will never notice me"
-    ], "unlockCode": "The Challenge", "whenUnlocked": "playAppear()", "hint": "T.. ........."
+    ], "finalMessage": "My level", "unlockCode": "The Challenge", "whenUnlocked": "playAppear()", "hint": "Th. ........."
+  },
+  {"id": 2, "name": "Special Chest", "type": "color", "item": 33, "messages": [
+    "Which came first?",
+    "The chicken or the egg?",
+    "...",
+    "The egg, of course.",
+    "Then the egg laid the chicken",
+    "... and the chicken said",
+    "The password is on fire",
+    "I need to get some rest..."
+    ], "finalMessage": "Indeed it is...", "unlockCode": "thechickenisonfire", "whenUnlocked": "achievement('Burnt Chicken')", "hint": "Th. ........."
+  },
+    {"id": 3, "name": "I can count!", "type": "cube", "item": 76, "messages": [
+    "So... there is a tree",
+    "A very short tree",
+    "In this tree there lives a Witch",
+    "A very short Witch",
+    "The Witch stinks of fish",
+    "My question to you is this...",
+    "On a scale from tree to fish",
+    "How many shinies do you have?"
+    ], "finalMessage": "I wish I had that many shinies...", "unlockCode": "<stars>", "whenUnlocked": "achievement('I can count!')", "hint": "A certain currency..."
+  },
+  {"id": 4, "name": "Brain Power", "type": "cube", "item": 80, "messages": [
+    "Oh my head...",
+    "I feel so drained",
+    "Would be nice to get some energy",
+    "You know, for my head...",
+    "Nothing? Ok..."
+    ], "finalMessage": 
+    "O-oooooooooo AAAAE-A-A-I-A-U- JO-oooooooooooo!"
+    , "unlockCode": "The Challenge", "whenUnlocked": "playAppear()", "hint": "br........"
   }
 ]

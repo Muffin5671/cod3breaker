@@ -30,6 +30,7 @@ let kmMessageNum;
 let response3;
 let kmBasementNum;
 
+// will be used in options menu
 function getMetadata() {
   return {
     version: '1.0.0',
