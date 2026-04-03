@@ -170,14 +170,40 @@ async function readResponses() {
 
 function getAchievementData() {
   fetch('data/achievementList.json')
-  .then(res => res.json()).then(data => {
+  .then(res => res.json())
+  .then(data => {
     let achMenuElement = document.getElementById('achMenu');
-    data.forEach((object) => {
+    data.forEach(object => {
       achievementDiv = document.createElement('div');
       achievementDiv.id = object.id;
       achievementDiv.title = `Hint: ${object.hint}`;
       iconImg = document.createElement('img');
-      iconImg.src = `images/icons/${object.cube}.png`;
+      switch (object.type) {
+        case 'cube':
+          iconImg.src = `images/icons/${object.item}.png`;
+          break;
+        case 'ship':
+          iconImg.src = `images/ships/${object.item}.png`;
+          break;
+        case 'ball':
+          iconImg.src = `images/balls/${object.item}.png`;
+          break;
+        case 'ufo':
+          iconImg.src = `images/ufos/${object.item}.png`;
+          break;
+        case 'wave':
+          iconImg.src = `images/waves/${object.item}.png`;
+          break;
+        case 'robot':
+          iconImg.src = `images/robots/${object.item}.png`;
+          break;
+        case 'spider':
+          iconImg.src = `images/spiders/${object.item}.png`;
+          break;
+        case 'color':
+          iconImg.src = `images/colors/${object.item}.png`;
+          break;
+      }
       iconImg.style.inlineSize = '60px';
       achLabel = document.createElement('p');
       achLabel.innerText = object.name;
@@ -192,13 +218,14 @@ function getAchievementData() {
   })
 }
 
-function loadFetch() {
+function runOnload() {
   readResponses();
   getAchievementData();
+  console.log(getMetadata());
 }
 
 // fetches keymaster responses when page loads
-onload = loadFetch;
+onload = runOnload;
 
 // keymaster's next message, who 'reads' your messages
 function nextMessage(userInput) {
@@ -227,6 +254,7 @@ function nextMessage(userInput) {
   }
 }
 
+// pressing enter submits input
 document.addEventListener('keydown', event => {
   if (event.code == 'Enter') {
     nextMessage(document.querySelector('#userInput').value);
@@ -261,6 +289,7 @@ function achievement(name, cubeID) {
   achName.innerText = name;
   element.append(achName);
   document.body.append(element);
+  setTimeout(3000, () => {document.querySelector('#achPopup').remove()});
   
 }
 
