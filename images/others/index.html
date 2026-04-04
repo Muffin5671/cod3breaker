@@ -2,11 +2,11 @@
 <html>
   <head>
     <script>
-      fetch('https://api.github.com/repos/Muffin5671/keymaster/images/others/contents')
+      fetch('https://api.github.com/repos/Muffin5671/keymaster/contents/images/others')
      .then(res => res.json())
      .then(data => {
        console.log(data)
-       data.forEach((object) => {
+       data.forEach(object => {
          let a = document.createElement('a');
          let p = document.createElement('p');
          a.className = 'file';
@@ -18,8 +18,8 @@
            path = object.path;
          }
       
-         a.href = `${window.location.href}?path=${path}`;
-         p.innerText = path;
+         a.href = `https://${window.location.href}/keymaster/${path}`;
+         p.innerText = `${path}   size: ${object.size}`;
          a.append(p);
          document.body.append(a);
        })

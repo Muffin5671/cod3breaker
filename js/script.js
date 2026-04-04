@@ -1,5 +1,6 @@
 // setup script
-import * as zip from 'libs/zip.min.js';
+import ModReader from './modules/modReader.js';
+import * as zip from './libs/zip.min.js';
 
 let music = new Audio('sounds/secretLoop.mp3');
 let sfx = new Audio('sounds/achievement.mp3');
@@ -338,9 +339,4 @@ function saveSettings() {
   } else {
     localStorage.vosSettings = JSON.stringify(settings);
   }
-}
-
-// mod reader
-function loadMod(zip) {
-  zip
 }
