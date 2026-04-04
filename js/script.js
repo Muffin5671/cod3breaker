@@ -1,4 +1,5 @@
 // setup script
+import * as zip from 'libs/zip.min.js';
 
 let music = new Audio('sounds/secretLoop.mp3');
 let sfx = new Audio('sounds/achievement.mp3');
@@ -19,7 +20,8 @@ if (!(localStorage.vosSettings == undefined)) {
   audioOn = false;
 }
 
-document.getElementById('userNameInput').value = JSON.parse(localStorage.vosSettings).userName;
+document.querySelector('#userNameInput').value = JSON.parse(localStorage.vosSettings).userName;
+document.querySelector('#audioCheck').checked = audioOn;
 
 let response;
 let kmResponseNum;
@@ -338,6 +340,7 @@ function saveSettings() {
   }
 }
 
+// mod reader
 function loadMod(zip) {
-  // mod reader
+  zip
 }

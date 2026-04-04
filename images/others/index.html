@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      fetch('https://api.github.com/repos/Muffin5671/keymaster/images/others/contents')
+     .then(res => res.json())
+     .then(data => {
+       console.log(data)
+       data.forEach((object) => {
+         let a = document.createElement('a');
+         let p = document.createElement('p');
+         a.className = 'file';
+
+         let path;
+         if (object.type == 'dir') {
+           path = object.path + '/';
+         } else {
+           path = object.path;
+         }
+      
+         a.href = `${window.location.href}?path=${path}`;
+         p.innerText = path;
+         a.append(p);
+         document.body.append(a);
+       })
+     })
+    </script>
+    <body>
+      <noscript>Please enable JavaScript.</noscript>
+    </body>
+  </head>
+</html>
