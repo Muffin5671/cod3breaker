@@ -177,7 +177,7 @@ function getAchievementData() {
       let achievementDiv = document.createElement('div');
       achievementDiv.id = object.id;
       achievementDiv.title = `Hint: ${object.hint}`;
-      iconImg = document.createElement('img');
+      let iconImg = document.createElement('img');
       switch (object.type) {
         case 'cube':
           iconImg.src = `images/icons/${object.item}.png`;
