@@ -1,6 +1,4 @@
 // setup script
-import ModReader from './modules/modReader.js';
-
 let music = new Audio('sounds/secretLoop.mp3');
 let sfx = new Audio('sounds/achievement.mp3');
 
@@ -176,7 +174,7 @@ function getAchievementData() {
   .then(data => {
     let achMenuElement = document.getElementById('achMenu');
     data.forEach(object => {
-      achievementDiv = document.createElement('div');
+      let achievementDiv = document.createElement('div');
       achievementDiv.id = object.id;
       achievementDiv.title = `Hint: ${object.hint}`;
       iconImg = document.createElement('img');
@@ -304,7 +302,6 @@ function achMenu() {
 }
 
 function generateSettingsFile({defaultSettings: defaultSettings}) {
-
   let settingsUserName;
   let settingsAudioOn;
 
@@ -337,5 +334,18 @@ function saveSettings() {
     alert('Username cannot be empty.')
   } else {
     localStorage.vosSettings = JSON.stringify(settings);
+  }
+}
+
+class ModReader {
+  constructor(file) {
+    return {
+      name: modName,
+      author: modAuthor,
+      description: modDesc,
+      web_version: webVer,
+      mod_version: modVer,
+      mobileCompatible: mobile
+    }
   }
 }
