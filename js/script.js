@@ -24,7 +24,7 @@ if (!(localStorage.vosSettings == undefined)) {
 
 document.querySelector('#userNameInput').value = JSON.parse(localStorage.vosSettings).userName;
 document.querySelector('#audioCheck').checked = audioOn;
-
+ 
 let response;
 let kmResponseNum;
 

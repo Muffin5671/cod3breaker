@@ -1,5 +1,3 @@
-import * as zip from '@zip.js/zip.js';
-
 class ModReader {
   constructor(file) {
     
@@ -12,10 +10,6 @@ class ModReader {
       mobileCompatible: mobile
     }
   }
-}
-
-class Application {
-  redirect(url) {}
 }
 
 const ModUtils = {
@@ -100,10 +94,6 @@ function getDocument() {
   }
 }
 
-function modAlert(str) {
-  alert(`${modName}: ${str}`);
-}
-
 const scriptURL = new URLSearchParams(window.location.search).get('script');
 
 let script;
@@ -116,4 +106,4 @@ if (!urlIsNull) {
   document.body.append(script);
 }
  
-export {ModReader, ModUtils, req, Settings, getDocument, modAlert};
+export {ModReader, ModUtils, req, Settings, getDocument};
