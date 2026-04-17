@@ -368,6 +368,6 @@ function exportSettingsFile() {
 }
 
 // event listeners
-$('#keymaster').addEventListener('click', () => {
+document.querySelector('#keymaster').addEventListener('click', () => {
   nextMessage($('#userInput').value);
 })
