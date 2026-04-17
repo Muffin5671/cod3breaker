@@ -106,4 +106,10 @@ if (!urlIsNull) {
   document.body.append(script);
 }
  
-export {ModReader, ModUtils, req, Settings, getDocument};
+export default {
+  ModReader, 
+  ModUtils, 
+  req, 
+  Settings, 
+  getDocument
+};
