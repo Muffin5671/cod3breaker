@@ -284,7 +284,7 @@ function nextMessage(userInput) {
 // pressing enter submits input
 document.addEventListener('keydown', event => {
   if (event.code == 'Enter') {
-    nextMessage(document.querySelector('#userInput').value);
+    nextMessage($('#userInput').value);
   }
 })
 
@@ -361,3 +361,13 @@ function saveSettings() {
   if (uEmpty) alert('Username cannot be empty.');
   else localStorage.vosSettings = JSON.stringify(settings);
 }
+
+function exportSettingsFile() {
+  const file = new File([JSON.stringify(generateSettingsFile())], 'kmSettings.json');
+  saveAs(file);
+}
+
+// event listeners
+$('#keymaster').addEventListener('click', () => {
+  nextMessage($('#userInput').value);
+})
