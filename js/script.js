@@ -226,7 +226,7 @@ function getAchievementData() {
           break;
       }
       iconImg.style.inlineSize = '60px';
-      achLabel = document.createElement('p');
+      let achLabel = document.createElement('p');
       achLabel.innerText = object.name;
       achLabel.style.fontSize = '20px';
       achLabel.style.webkitTextStroke = '1px';
@@ -238,9 +238,10 @@ function getAchievementData() {
     })
   }).catch(err => {
     const errMsg = document.createElement('p');
-    errMsg.innerText = 'Something went wrong...';
+    if (userName == 'MuffinGDYT') errMsg.innerText = `Failure: ${err}`;
+    else errMsg.innerText = 'Something went wrong...';
     document.querySelector('#achMenu').append(errMsg);
-    throw new Error(`Request failed: ${err}`);
+    throw new Error(`Failure: ${err}`);
   })
 }
 
