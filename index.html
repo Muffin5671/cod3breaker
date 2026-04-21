@@ -104,7 +104,9 @@
         <input id="userNameInput" style="height: 60px;" placeholder="Username" maxlength="15" autocomplete="off">
         <button style="width: 40%; height: 62px; transform: translateY(-80px);" onclick="saveSettings()">Save</button>
         <input type="checkbox" id="audioCheck">
-        <button style="width: 90%; height: 62px;" onclick="localStorage.removeItem('vosCached'); window.location.reload();">Clear Cache and Reload</button>
+        <button id="clearCache" style="width: 560px; height: 62px;">Clear Cache and Reload</button>
+        <button id="exportSettings" style="width: 560px; height: 62px;">Export Settings</button>
+        <button id="importSettings" style="width: 560px; height: 62px;">Import Settings</button>
       </div>
       <div class="brownbox" id="achMenu" style="
         position: absolute;

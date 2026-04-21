@@ -216,6 +216,9 @@ function getAchievementData() {
         case 'spider':
           iconImg.src = `images/spiders/${object.item}.png`;
           break;
+        case 'swing':
+          iconImg.src = `images/swings/${object.item}.png`;
+          break;
         case 'color':
           iconImg.src = `images/colors/${object.item}.png`;
           break;
@@ -349,6 +352,12 @@ function exportSettingsFile() {
   saveAs(file);
 }
 
+async function importSettingsFile() {
+  const file = document.querySelector('#settingsFile').files[0];
+  localStorage.vosSettings = await file.text();
+  window.location.reload();
+}
+
 // event listeners
 document.querySelector('#keymaster').addEventListener('click', () => {
   nextMessage(document.querySelector('#userInput').value);
@@ -368,3 +377,12 @@ document.querySelector('#basementDoor').addEventListener('click', () => {
 document.querySelector('#optClose').addEventListener('click', () => {
   document.getElementById('optMenu').style.display = 'none';
 })
+
+document.querySelector('#clearCache').addEventListener('click', () => {
+  localStorage.removeItem('vosCached');
+  window.location.reload();
+});
+
+document.querySelector('#exportSettings').addEventListener('click', () => {
+  exportSettingsFile();
+});
