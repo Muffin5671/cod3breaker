@@ -185,6 +185,7 @@ async function readResponses() {
 }
 
 function getAchievementData() {
+  console.info('%cINFO %cretrieving achievement data', 'font-weight: bold; color: #0084ff;', '');
   fetch('data/achievementList.json')
   .then(res => res.json())
   .then(data => {
@@ -243,14 +244,12 @@ function getAchievementData() {
   })
 }
 
-function runOnload() {
+// runs multiple functions when page loads
+onload = () => {
   readResponses();
   getAchievementData();
   console.info(getInfo());
 }
-
-// runs multiple functions when page loads
-onload = runOnload;
 
 // keymaster's next message, who 'reads' your messages
 function nextMessage(userInput) {

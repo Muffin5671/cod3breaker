@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Index of images/others</title>
     <script>
       fetch('https://api.github.com/repos/Muffin5671/keymaster/contents/images/others')
      .then(res => res.json())
@@ -18,7 +19,7 @@
            path = object.path;
          }
       
-         a.href = `https://${window.location.href}/keymaster/${path}`;
+         a.href = `${window.location.href}${path}`;
          p.innerText = `${path}   size: ${object.size}`;
          a.append(p);
          document.body.append(a);
