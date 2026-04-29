@@ -56,12 +56,10 @@ function playAudio() {
   document.body.addEventListener('click', audioCheck);
 }
 
-function clickActions() {
+onclick = () => {
   audioCheck();
   mobilePopup();
-}
-
-onclick = clickActions;
+};
 
 // checks if audio option is on/off
 function audioCheck() {
@@ -172,7 +170,7 @@ async function readResponses() {
     }
     
   } catch (err) {
-    
+
     document.getElementById('keymasterResponse').innerHTML = 'Something went wrong...';
     throw new Error(err);
     
@@ -185,7 +183,6 @@ async function readResponses() {
 }
 
 function getAchievementData() {
-  console.info('%cINFO %cretrieving achievement data', 'font-weight: bold; color: #0084ff;', '');
   fetch('data/achievementList.json')
   .then(res => res.json())
   .then(data => {
@@ -254,7 +251,8 @@ onload = () => {
 // keymaster's next message, who 'reads' your messages
 function nextMessage(userInput) {
   let kmResponse = document.getElementById('keymasterResponse');
-  if (!(userInput == '')) {
+  const inputEmpty = userInput == '';
+  if (!inputEmpty) {
 
     kmResponse.innerText = response[kmResponseNum].message.replace('<username>', JSON.parse(localStorage.vosSettings).userName);
     kmResponse.style.color = response[kmResponseNum].color;
@@ -368,6 +366,10 @@ document.addEventListener('keydown', event => {
 
 document.querySelector('#basementDoor').addEventListener('click', () => {
   basementMessage();
+})
+
+$('#optBtn')[0].addEventListener('click', () => {
+  optMenu();
 })
 
 document.querySelector('#optClose').addEventListener('click', () => {
